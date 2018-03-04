@@ -1,0 +1,16 @@
+﻿@using Udemy_VidlyApp.Models;
+@model Udemy_VidlyApp.Models.Customer
+
+
+@{
+    ViewBag.Title = " Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@(((Customer)ViewData["Customer"]).Name)</h2>
+
+
+<ul>
+    <li>MembershipType: @(((Customer)ViewData["Customer"]).MemberShipType.Name)</li>
+    <li>Date of Birth : @(((Customer)ViewData["Customer"]).Dob)</li>
+</ul>
+

@@ -1,0 +1,83 @@
+﻿@using Udemy_VidlyApp.ViewModel
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+     #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        color:white;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #000000;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #0a0a0a;
+    }
+        #customers tr:nth-child(2n+1) {
+            background-color: #0a0a0a;
+        }
+
+    #customers tr:hover {
+        background-color: #2e2929;
+    }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #760606;
+            color: white;
+            width: 50%;
+        }
+
+    .button {
+        background-color: #070505;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+</style>
+<h2> Customers</h2>
+
+@if (Model.Customer.Count == 0)
+{
+    <text> No Customers yet! </text>
+
+}
+
+@using (Html.BeginForm("New", "Customer")){ 
+<button class="button">New Customer</button>
+}
+
+<table id="customers">
+    <thead>
+        <tr>
+            <th >Customers</th>
+            <th >MembershipTypes</th>
+        </tr>
+    </thead>
+    @foreach (var cust in Model.Customer)
+    {
+        <tr >
+
+            <td >@Html.ActionLink((string)cust.Name, "Edit", "Customer", new { @id = cust.Id }, null)</td>
+            <td>@cust.MemberShipType.Name</td>
+
+        </tr>
+
+    }
+</table>

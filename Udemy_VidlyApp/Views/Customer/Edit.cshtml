@@ -1,0 +1,45 @@
+﻿@model Udemy_VidlyApp.ViewModel.CustomerFormViewModel
+@{
+    ViewBag.Title = "EditDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Customer Details</h2>
+
+
+@using (Html.BeginForm("Update", "Customer"))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.Id)
+        @Html.TextBoxFor(m => m.Customer.Id, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.MemberShipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MemberShipTypeId, new SelectList(ViewBag.ViewModel.MemberShipTypes, "Id", "Name"), "Select MemberShipType", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Customer.Name)
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.Dob)
+        @Html.TextBoxFor(m => m.Customer.Dob, "{0: d MMM YYYY}", new { @class = "form-control" })
+    </div>
+
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSuscribed)Is Subscribed To Newsletter?
+        </label>
+    </div>
+    @Html.HiddenFor(m => m.Customer.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

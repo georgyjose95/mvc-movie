@@ -1,0 +1,15 @@
+﻿@using Udemy_VidlyApp.Models;
+@model Udemy_VidlyApp.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@(((Movie)ViewData["Movie"]).Name)</h2>
+
+<ul style="font-size:large">
+    <li>Genre           :@(((Movie)ViewData["Movie"]).Genre.Name)</li>
+    <li>Released Date   :@(((Movie)ViewData["Movie"]).ReleaseDate) </li>
+    <li>Date Added      :@(((Movie)ViewData["Movie"]).DateAdded )</li>
+    <li>Remaninig Stock :@(((Movie)ViewData["Movie"]).Stock)</li>
+</ul>

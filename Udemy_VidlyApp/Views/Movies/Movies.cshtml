@@ -1,0 +1,117 @@
+﻿@using Udemy_VidlyApp.Models;
+
+   @* @model Udemy_VidlyApp.Models.Movie*@
+
+@using Udemy_VidlyApp.ViewModel;
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        color: white;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #000000;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #0a0a0a;
+        }
+
+        #customers tr:nth-child(2n+1) {
+            background-color: #0a0a0a;
+        }
+
+        #customers tr:hover {
+            background-color: #2e2929;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #760606;
+            color: white;
+            width: 50%;
+        }
+
+    .button {
+        background-color: #070505;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+</style>
+<h2> Movies</h2>
+
+@if (Model.Movie.Count == 0)
+{
+    <text> No Movies yet! </text>
+
+}
+@Html.ActionLink("New Movie","NewMovie","Movies" , new { @class = "button" })
+
+<table id="customers">
+
+    <thead>
+        <tr>
+            <th >Movies</th>
+            <th >Genre</th>
+        </tr>
+    </thead>
+    @foreach (var movie in Model.Movie)
+    {
+        <tr>
+            <td >@Html.ActionLink((string)movie.Name,"Edit","Movies", new { @id = movie.Id},null)</td>
+            <td style="width:100%"><a>@movie.Genre.Name</a> </td>
+
+        </tr>
+
+    }
+</table>
+
+@*@{
+        var moviesCount = Model.Customer.Count > 0 ? "rented" : null;
+
+    }
+
+    <h2 class="@moviesCount">@Model.Movie.Name</h2>
+
+    @if (Model.Customer.Count == 0)
+    {
+        <text> No Customers for the Movie ! </text>
+
+    }
+    else
+    {
+
+
+    <ul>
+        @foreach (var cust in Model.Customer)
+        {
+            <li>@cust.Name</li>
+        }
+    </ul>
+    }*@
+
+
+
+@*@<h2>@(((Movie)ViewData["Movie"]).Name)</h2>*@
+
+@*<h2>@(((Movie)ViewBag.Movie).Name)</h2>*@
+
+

@@ -1,0 +1,63 @@
+﻿@model Udemy_VidlyApp.ViewModel.MoviesFormViewModel
+@{
+    ViewBag.Title = "EditMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .button {
+        background-color: #070505;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+</style>
+<h2>Edit Movie</h2>
+
+@using (Html.BeginForm("Update", "Movies"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.Id)
+        @Html.TextBoxFor(m => m.Movie.Id, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.Name)
+        @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Movie.Name)
+        
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.ReleaseDate)
+        @Html.TextBoxFor((m => m.Movie.ReleaseDate), "{ 0: dd MMM YYYY}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.DateAdded)
+        @Html.TextBoxFor(m => m.Movie.DateAdded, "{ 0: dd MMM YYYY}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.DateAdded)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.GenreId)
+        @Html.DropDownListFor((m => m.Movie.GenreId), new SelectList(ViewBag.ViewModel.Genres, "Id", "Name"), " Select Genre", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Movie.GenreId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie.Stock)
+        @Html.TextBoxFor(m => m.Movie.Stock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Movie.Stock)
+    </div>
+    @Html.AntiForgeryToken()
+    
+    <button type="submit" class="button">Edit</button>
+}
+
+
+
