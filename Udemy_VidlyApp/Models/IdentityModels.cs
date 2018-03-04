@@ -20,6 +20,10 @@ namespace Udemy_VidlyApp.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Movie> Movie { get; set; }
+        public DbSet<MemberShipType> MemberShipTypes { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
