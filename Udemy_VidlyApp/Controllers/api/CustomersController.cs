@@ -33,6 +33,7 @@ namespace Udemy_VidlyApp.Controllers.api
             if(customer == null)
             {
                 return NotFound();
+              //  return HttpResponseException(HttpStatusCode.NotFound())
 
 
             }
@@ -46,6 +47,7 @@ namespace Udemy_VidlyApp.Controllers.api
             if (!ModelState.IsValid)
             {
                 return BadRequest();
+             //   return HttpResponseException(HttpStatusCode.BadRequest());
             }
 
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);

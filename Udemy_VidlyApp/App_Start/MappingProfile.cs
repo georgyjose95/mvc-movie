@@ -14,7 +14,11 @@ namespace Udemy_VidlyApp.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<CustomerDto, Customer>();
+            Mapper.CreateMap<Movie, MoviesDto>();
+            Mapper.CreateMap<MoviesDto, Movie>();
 
+
+            
         }
 
     }
